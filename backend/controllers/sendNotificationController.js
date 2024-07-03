@@ -3,6 +3,7 @@ import sendNotificationMailer from "../utils/notificationMailer.js";
 import Product from "../models/productModel.js";
 import SendNotification from "../models/sendNotificationModel.js";
 
+// @desc Send notification email and save to database 
 export const sendNotificationAction = asyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id);
 

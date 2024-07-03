@@ -18,7 +18,7 @@ const Inventory = () => {
     fetchProducts();
   }, []);
 
-  const fetchProducts = async () => {
+  const fetchProducts = async () => {// fetch products from API endpoint
     try {
       const res = await axios.get(API_ENDPOINTS.fetchProducts);
       setProducts(res.data);
@@ -27,7 +27,7 @@ const Inventory = () => {
     }
   };
 
-  const sendNotification = async (productId) => {
+  const sendNotification = async (productId) => {// send email notification to receiver
     try {
       const res = await axios.post(API_ENDPOINTS.sendNotification(productId));
       TOAST_CONFIG.success(res.data.message);
@@ -37,7 +37,7 @@ const Inventory = () => {
     }
   };
 
-  const validateForm = () => {
+  const validateForm = () => {// validate form inputs
     const errors = {};
     if (name.trim().length < 3) {
       errors.name = VALIDATION_ERRORS.name;
@@ -51,7 +51,7 @@ const Inventory = () => {
     return Object.keys(errors).length === 0;
   };
 
-  const addProduct = async () => {
+  const addProduct = async () => {// add product to API endpoint
     if (!validateForm()) return;
 
     try {
@@ -65,7 +65,7 @@ const Inventory = () => {
     }
   };
 
-  const updateProduct = async (id) => {
+  const updateProduct = async (id) => {// update product in API endpoint
     if (!validateForm()) return;
 
     try {
@@ -79,7 +79,7 @@ const Inventory = () => {
     }
   };
 
-  const increaseQuantity = async (id) => {
+  const increaseQuantity = async (id) => {// increase product quantity in API endpoint
     try {
       await axios.patch(API_ENDPOINTS.increaseQuantity(id));
       fetchProducts();
@@ -89,7 +89,7 @@ const Inventory = () => {
     }
   };
 
-  const decreaseQuantity = async (id) => {
+  const decreaseQuantity = async (id) => {// decrease product quantity in API endpoint
     const product = products.find((p) => p._id === id);
     if (product.quantity > 0) {
       try {
@@ -105,7 +105,7 @@ const Inventory = () => {
     }
   };
 
-  const deleteProduct = async (id) => {
+  const deleteProduct = async (id) => {// delete product from API endpoint
     try {
       await axios.delete(API_ENDPOINTS.deleteProduct(id));
       setProducts(products.filter((product) => product._id !== id));
@@ -115,20 +115,20 @@ const Inventory = () => {
     }
   };
 
-  const editProduct = (product) => {
+  const editProduct = (product) => {// edit product in form
     setName(product.name);
     setQuantity(product.quantity);
     setEditingProductId(product._id);
   };
 
-  const resetForm = () => {
+  const resetForm = () => {// reset form inputs
     setName(INITIAL_STATE.name);
     setQuantity(INITIAL_STATE.quantity);
     setEditingProductId(INITIAL_STATE.editingProductId);
     setErrors(INITIAL_STATE.errors);
   };
 
-  const handleSave = () => {
+  const handleSave = () => {// handle form submission
     if (editingProductId) {
       updateProduct(editingProductId);
     } else {

@@ -1,6 +1,9 @@
-Inventory Management System
-Overview
-This is a full stack MERN (MongoDB, Express.js, React.js, Node.js) application for managing an inventory of products. It includes functionality for adding, updating, deleting, and viewing products, as well as sending notifications about products. The frontend is built using React and the backend is built using Node.js and Express.js, with MongoDB as the database.
+Inventory Management System Overview:
+- This APP is a full stack MERN (MongoDB, Express.js, React.js, Node.js) web application for managing an inventory of products with quantity. It includes functionality for adding, updating, deleting, and viewing products, as well as sending notifications about products when the product quantity is zero.
+- Also this system has custom error handling for the fronend and backend which is able to catch any error raising during usage of this app.
+- 
+- When the product quantity is zero and if you click on the Send Notification button, it will send a notification email to receiver's email as well as it will also save notification details sent to user in the MongoDB Database too.
+- The frontend is built using React, the styling and responsiveness is done using CSS3 technolgoy and the backend is built using Node.js and Express.js, with MongoDB as the database.
 
 Features
 Add new products

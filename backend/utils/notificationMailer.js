@@ -3,7 +3,7 @@ import asyncHandler from "express-async-handler";
 import dotenv from "dotenv";
 dotenv.config();
 
-// Send notification email
+// Send notification email to receiver using nodemailer
 const sendNotificationMailer = asyncHandler(async (product) => {
     try {
         const transporter = nodemailer.createTransport({
